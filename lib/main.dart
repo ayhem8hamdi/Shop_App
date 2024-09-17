@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Views/home_screen.dart';
 
 void main() {
   runApp(const ShopApp());
@@ -10,10 +11,10 @@ class ShopApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(),
-      ),
+      routes: {HomeScreen.id: (context) => const HomeScreen()},
+      initialRoute: HomeScreen.id,
     );
   }
 }
