@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Views/home_screen.dart';
 import 'package:shopp_app/Views/splash_screen.dart';
 
 void main() {
@@ -12,7 +13,10 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {SplashScreen.id: (context) => const SplashScreen()},
+      routes: {
+        SplashScreen.id: (context) => const SplashScreen(),
+        HomeScreen.id: (context) => const HomeScreen()
+      },
       initialRoute: SplashScreen.id,
     );
   }
