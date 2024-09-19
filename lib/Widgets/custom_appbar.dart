@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Widgets/custom_badge.dart';
 import 'package:shopp_app/constants.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -20,19 +21,15 @@ class CustomAppBar extends StatelessWidget {
             size: 30,
           ),
           Container(
-            padding: const EdgeInsets.all(8),
-            color: kPrimaryColor,
+            padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
+                color: kPrimaryColor,
                 borderRadius: BorderRadius.circular(8),
-                boxShadow: const [BoxShadow(color: Colors.white)]),
-            child: GestureDetector(
-              onTap: () {},
-              child: const Icon(
-                CupertinoIcons.cart,
-                size: 30,
-                color: Colors.white,
-              ),
-            ),
+                border: Border.all(
+                  color: Colors.white,
+                  width: 1.0,
+                )),
+            child: const CustomBadge(),
           )
         ],
       ),
