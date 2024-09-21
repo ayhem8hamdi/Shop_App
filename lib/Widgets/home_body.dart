@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopp_app/Widgets/category_item_builder.dart';
+import 'package:shopp_app/Widgets/home_body_headers.dart';
 import 'package:shopp_app/constants.dart';
 
 class HomeBody extends StatelessWidget {
@@ -17,35 +18,29 @@ class HomeBody extends StatelessWidget {
           topRight: Radius.circular(32),
         ),
       ),
-      child: Column(
+      child: const Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Category',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Text(
-                'See all',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 17,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          const SizedBox(
+          HomeBodyHeaders(text: 'Category'),
+          SizedBox(height: 10),
+          SizedBox(
             height: 101,
-            child: CustomListViewBuilder(),
+            child: CustomListViewBuilder(
+              type: 'cat',
+            ),
           ),
+          SizedBox(
+            height: 17,
+          ),
+          HomeBodyHeaders(text: 'Popular'),
+          SizedBox(height: 10),
+          SizedBox(
+            height: 125,
+            child: CustomListViewBuilder(
+              type: 'pop',
+            ),
+          )
         ],
       ),
     );
