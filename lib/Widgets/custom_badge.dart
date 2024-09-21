@@ -9,26 +9,28 @@ class CustomBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Badge(
+      offset: const Offset(7, -5),
       alignment: Alignment.topRight,
       smallSize: 18,
       largeSize: 24,
       label: const Text(
-        '3',
+        '7',
         style: TextStyle(
+          fontSize: 14,
           fontWeight: FontWeight.bold, // Make the text bold
         ),
       ),
       isLabelVisible: true,
       textColor: Colors.white,
       backgroundColor: Colors.red,
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
       child: GestureDetector(
         onTap: () {},
         child: Container(
-          padding: const EdgeInsets.all(6),
+          padding: const EdgeInsets.all(4),
           child: const Icon(
             CupertinoIcons.cart,
-            size: 28,
+            size: 30,
             color: Colors.white,
           ),
         ),

@@ -20,20 +20,15 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HomeHeaders(),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  CustomSearchBar(),
-                  SizedBox(
-                    height: 26,
-                  ),
-                  HomeBody()
-                ],
+              HomeHeaders(),
+              SizedBox(
+                height: 18,
               ),
+              CustomSearchBar(),
+              SizedBox(
+                height: 26,
+              ),
+              HomeBody(),
             ],
           ),
         ),

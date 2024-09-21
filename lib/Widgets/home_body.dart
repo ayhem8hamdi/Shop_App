@@ -18,6 +18,7 @@ class HomeBody extends StatelessWidget {
         ),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -42,7 +43,7 @@ class HomeBody extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           const SizedBox(
-            height: 140,
+            height: 101,
             child: CustomListViewBuilder(),
           ),
         ],

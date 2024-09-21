@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopp_app/Widgets/custom_badge.dart';
 import 'package:shopp_app/constants.dart';

@@ -46,7 +46,7 @@ class Api {
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
     };
-    print(url);
+
     try {
       final Response response = await Dio().put(
         url,
@@ -55,7 +55,6 @@ class Api {
       );
 
       if (response.statusCode == 200) {
-        print(body);
         if (response.data is String) {
           return jsonDecode(response.data) as Map<String, dynamic>;
         }
@@ -66,7 +65,6 @@ class Api {
             'Failed to update data. Status code: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      print(e.toString());
       throw Exception('Dio error: ${e.toString()}');
     } catch (e) {
       throw Exception('General error: ${e.toString()}');
