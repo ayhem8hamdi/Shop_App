@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopp_app/Widgets/category_item_builder.dart';
 import 'package:shopp_app/Widgets/home_body_headers.dart';
-import 'package:shopp_app/constants.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -40,7 +39,11 @@ class HomeBody extends StatelessWidget {
             child: CustomListViewBuilder(
               type: 'pop',
             ),
-          )
+          ),
+          SizedBox(
+            height: 17,
+          ),
+          HomeBodyHeaders(text: 'Top'),
         ],
       ),
     );

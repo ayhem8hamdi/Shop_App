@@ -23,6 +23,7 @@ class HomeBodyHeaders extends StatelessWidget {
         const Text(
           'See all',
           style: TextStyle(
+            fontWeight: FontWeight.bold,
             color: Colors.black54,
             fontSize: 17,
           ),
