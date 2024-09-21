@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopp_app/Widgets/category_item_builder.dart';
+import 'package:shopp_app/Widgets/custom_grid_builder.dart';
 import 'package:shopp_app/Widgets/home_body_headers.dart';
 
 class HomeBody extends StatelessWidget {
@@ -44,6 +45,7 @@ class HomeBody extends StatelessWidget {
             height: 17,
           ),
           HomeBodyHeaders(text: 'Top'),
+          CustomGridBuilder()
         ],
       ),
     );

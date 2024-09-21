@@ -7,51 +7,83 @@ class TopCatItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [
-            BoxShadow(color: Colors.grey, blurRadius: 6, spreadRadius: 1)
-          ]),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            blurRadius: 8,
+            spreadRadius: 3,
+          ),
+        ],
+      ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 18, right: 18),
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 7),
-            child: Image.asset(
-              'Assets/Images/5.png',
-              width: 90,
-              height: 90,
-              fit: BoxFit.cover,
+            margin: const EdgeInsets.only(bottom: 10, top: 5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  blurRadius: 10,
+                  spreadRadius: 1,
+                ),
+              ],
             ),
-          ),
-          const SizedBox(
-            height: 8,
+            child: Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  'Assets/Images/5.png',
+                  width: 87,
+                  height: 87,
+                ),
+              ),
+            ),
           ),
           const Text(
             'Item title',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 17,
+              fontSize: 18,
+              color: Colors.black87,
             ),
-          ),
-          const SizedBox(
-            height: 4,
           ),
           const Text(
             'Fresh Fruit 2Kg',
             style: TextStyle(
-              color: Colors.black87,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
+              color: Colors.black54,
+              fontWeight: FontWeight.w500,
+              fontSize: 15,
             ),
           ),
-          const SizedBox(
-            height: 8,
-          )
+          const SizedBox(height: 4),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                '\$20.00',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.green,
+                ),
+              ),
+              // Add to cart icon button
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Colors.green,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
