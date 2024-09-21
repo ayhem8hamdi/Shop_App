@@ -12,6 +12,7 @@ class CustomListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) => type == 'cat'

@@ -32,7 +32,7 @@ class SplashScreen extends StatelessWidget {
               CustomElevatedButton(
                 text: 'Get Started',
                 onPressed: () {
-                  Navigator.pushNamed(context, HomeScreen.id);
+                  Navigator.pushReplacementNamed(context, HomeScreen.id);
                 },
               ),
             ],

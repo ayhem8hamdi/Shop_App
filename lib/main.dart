@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopp_app/Views/home_screen.dart';
+import 'package:shopp_app/Views/item_screen.dart';
 import 'package:shopp_app/Views/splash_screen.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class ShopApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         SplashScreen.id: (context) => const SplashScreen(),
-        HomeScreen.id: (context) => const HomeScreen()
+        HomeScreen.id: (context) => const HomeScreen(),
+        ItemScreen.id: (context) => const ItemScreen()
       },
       initialRoute: SplashScreen.id,
     );
