@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Widgets/item_screen_icon.dart';
 import 'package:shopp_app/Widgets/item_screen_image.dart';
 import 'package:shopp_app/constants.dart';
 
@@ -23,8 +24,34 @@ class ItemScreen extends StatelessWidget {
                   topRight: Radius.circular(32),
                 ),
               ),
-              child: Column(
-                children: [],
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Fruit Name',
+                        style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      Row(
+                        children: [
+                          ItemScreenIcon(
+                            icon: Icons.add,
+                          ),
+                          Text(
+                            '01',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          ItemScreenIcon(icon: Icons.remove)
+                        ],
+                      )
+                    ],
+                  )
+                ],
               ),
             )
           ],
