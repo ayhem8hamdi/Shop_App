@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopp_app/Widgets/favourit_star_icon.dart';
 import 'package:shopp_app/Widgets/item_screen_icon.dart';
 import 'package:shopp_app/Widgets/item_screen_image.dart';
+import 'package:shopp_app/Widgets/itme_screen_footer.dart';
 import 'package:shopp_app/constants.dart';
 
 class ItemScreen extends StatelessWidget {
@@ -59,7 +61,6 @@ class ItemScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 8),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -76,7 +77,6 @@ class ItemScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 8),
-
                   Text(
                     'Description:',
                     style: TextStyle(
@@ -86,8 +86,6 @@ class ItemScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-
-                  // Description Text
                   Text(
                     "Bright, juicy, and packed with Vitamin C, our fresh oranges are the perfect balance of sweet and tangy flavor. Ideal for snacking, juicing, or adding zest to your favorite recipes. Hand-picked to ensure the highest quality and ripeness. Elevate your daily fruit intake with nature's citrus powerhouse!",
                     style: TextStyle(
@@ -96,9 +94,39 @@ class ItemScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  SizedBox(height: 12),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Delevery Time:',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            )),
+                        Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.clock,
+                              color: Colors.white,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                '20 minutes',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ]),
                 ],
               ),
             ),
+            const ItmeScreenFooter()
           ],
         ),
       ),
