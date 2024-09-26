@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ItemScreenImage extends StatelessWidget {
-  const ItemScreenImage({super.key, required this.image});
+  const ItemScreenImage(
+      {super.key, required this.image, this.width, this.height});
   final String image;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,8 @@ class ItemScreenImage extends StatelessWidget {
       child: Image.asset(
         image,
         fit: BoxFit.fill,
+        width: width,
+        height: height,
       ),
     );
   }

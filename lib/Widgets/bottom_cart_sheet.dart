@@ -1,10 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/constants.dart';
 
 class BottomCartSheet extends StatelessWidget {
   const BottomCartSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Material(
+      child: SingleChildScrollView(
+          child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
+        height: (MediaQuery.of(context).size.height) * 0.7,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 8,
+                        spreadRadius: 1)
+                  ]),
+              padding: EdgeInsets.symmetric(vertical: 4),
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'Assets/Images/6.png',
+                    width: 86,
+                    height: 86,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 8, bottom: 6),
+                        child: Text(
+                          'Item Title',
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              inherit: false),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 8),
+                        child: Text(
+                          '20\$',
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              inherit: false),
+                        ),
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.disabled_by_default,
+                          color: Colors.green,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      )),
+    );
   }
 }

@@ -23,15 +23,12 @@ class CustomBadge extends StatelessWidget {
       textColor: Colors.white,
       backgroundColor: Colors.red,
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.all(4),
-          child: const Icon(
-            CupertinoIcons.cart,
-            size: 30,
-            color: Colors.white,
-          ),
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        child: const Icon(
+          CupertinoIcons.cart,
+          size: 30,
+          color: Colors.white,
         ),
       ),
     );

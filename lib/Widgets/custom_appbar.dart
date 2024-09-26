@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Widgets/bottom_cart_sheet.dart';
 import 'package:shopp_app/Widgets/custom_badge.dart';
 import 'package:shopp_app/constants.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
-    this.onTap,
   });
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +21,25 @@ class CustomAppBar extends StatelessWidget {
             color: Colors.white,
             size: 30,
           ),
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: Colors.white,
-                  width: 1.0,
-                )),
-            child: CustomBadge(
-              onTap: onTap,
+          GestureDetector(
+            onTap: () => showSlidingBottomSheet(context,
+                builder: (context) => SlidingSheetDialog(
+                      elevation: 8,
+                      cornerRadius: 16,
+                      builder: (context, state) => const BottomCartSheet(),
+                    )),
+            child: Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1.0,
+                  )),
+              child: CustomBadge(
+                onTap: () {},
+              ),
             ),
           )
         ],
