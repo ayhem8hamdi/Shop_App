@@ -11,7 +11,14 @@ class ItemScreenIcon extends StatelessWidget {
         icon: Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(45)),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(45),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 8)
+              ]),
           child: Icon(
             icon,
             color: Colors.black87.withOpacity(0.78),

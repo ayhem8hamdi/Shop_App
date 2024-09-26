@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Widgets/item_screen_icon.dart';
 import 'package:shopp_app/constants.dart';
 
 class BottomCartSheet extends StatelessWidget {
@@ -27,8 +28,8 @@ class BottomCartSheet extends StatelessWidget {
                         blurRadius: 8,
                         spreadRadius: 1)
                   ]),
-              padding: EdgeInsets.symmetric(vertical: 4),
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
               child: Row(
                 children: [
                   Image.asset(
@@ -41,7 +42,7 @@ class BottomCartSheet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 8, bottom: 6),
+                        margin: const EdgeInsets.only(left: 8, bottom: 6),
                         child: Text(
                           'Item Title',
                           style: TextStyle(
@@ -52,7 +53,7 @@ class BottomCartSheet extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 8),
+                        margin: const EdgeInsets.only(left: 8),
                         child: Text(
                           '20\$',
                           style: TextStyle(
@@ -65,14 +66,31 @@ class BottomCartSheet extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 10),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Icon(
                           Icons.disabled_by_default,
                           color: Colors.green,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            ItemScreenIcon(icon: Icons.remove),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                '01',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            ItemScreenIcon(icon: Icons.add),
+                          ],
                         ),
                       ],
                     ),
