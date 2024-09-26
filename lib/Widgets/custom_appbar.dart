@@ -5,7 +5,9 @@ import 'package:shopp_app/constants.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
+    this.onTap,
   });
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,9 @@ class CustomAppBar extends StatelessWidget {
                   color: Colors.white,
                   width: 1.0,
                 )),
-            child: const CustomBadge(),
+            child: CustomBadge(
+              onTap: onTap,
+            ),
           )
         ],
       ),

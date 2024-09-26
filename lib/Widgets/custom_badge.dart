@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomBadge extends StatelessWidget {
-  const CustomBadge({
-    super.key,
-  });
+  const CustomBadge({super.key, this.onTap});
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class CustomBadge extends StatelessWidget {
       backgroundColor: Colors.red,
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
       child: GestureDetector(
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(4),
           child: const Icon(

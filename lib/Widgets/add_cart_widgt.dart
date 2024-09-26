@@ -13,18 +13,20 @@ class AddCart extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(21), color: kPrimaryColor),
         child: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
-              size: 26,
+              size: 30,
               Icons.add_shopping_cart,
               color: Colors.white,
             ),
             Text(
               'Add To Cart',
               style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-              ),
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
             )
           ],
         ),

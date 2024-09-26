@@ -17,7 +17,7 @@ class ItmeScreenFooter extends StatelessWidget {
             '120\$',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 25,
+              fontSize: 29,
               color: kPrimaryColor,
             ),
           ),
