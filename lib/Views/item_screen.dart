@@ -13,9 +13,10 @@ class ItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      body: ListView(children: [
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const ItemScreenImage(image: 'Assets/Images/6.png'),
             Container(
@@ -89,16 +90,16 @@ class ItemScreen extends StatelessWidget {
                   Text(
                     "Bright, juicy, and packed with Vitamin C, our fresh oranges are the perfect balance of sweet and tangy flavor. Ideal for snacking, juicing, or adding zest to your favorite recipes. Hand-picked to ensure the highest quality and ripeness. Elevate your daily fruit intake with nature's citrus powerhouse!",
                     style: TextStyle(
-                      fontSize: 16,
-                      height: 1.5,
+                      fontSize: 19,
+                      height: 1.6,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: 24),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Delevery Time:',
+                        Text('Delivery Time:',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -126,10 +127,10 @@ class ItemScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const ItmeScreenFooter()
           ],
         ),
-      ),
+        const ItmeScreenFooter(),
+      ]),
     );
   }
 }

@@ -11,7 +11,7 @@ class CustomGridBuilder extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.8,
+        childAspectRatio: 0.7,
       ),
       itemCount: 10,
       itemBuilder: (context, index) => const TopCatItem(),

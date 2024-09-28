@@ -20,6 +20,7 @@ class ItemScreenIcon extends StatelessWidget {
                     blurRadius: 8)
               ]),
           child: Icon(
+            size: 22,
             icon,
             color: Colors.black87.withOpacity(0.78),
           ),
