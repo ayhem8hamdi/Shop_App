@@ -4,7 +4,9 @@ import 'package:shopp_app/Widgets/favourit_star_icon.dart';
 import 'package:shopp_app/Widgets/item_screen_icon.dart';
 import 'package:shopp_app/Widgets/item_screen_image.dart';
 import 'package:shopp_app/Widgets/itme_screen_footer.dart';
+import 'package:shopp_app/Widgets/quantity_counter_widget.dart';
 import 'package:shopp_app/constants.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 class ItemScreen extends StatelessWidget {
   const ItemScreen({super.key});
@@ -13,14 +15,15 @@ class ItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
-        Column(
+      body: SingleChildScrollView(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const ItemScreenImage(image: 'Assets/Images/6.png'),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 40, bottom: 30),
               width: double.infinity,
               decoration: BoxDecoration(
                 color: kPrimaryColor,
@@ -31,34 +34,25 @@ class ItemScreen extends StatelessWidget {
               ),
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Product name',
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                      Flexible(
+                        child: Text(
+                          'Product name',
+                          softWrap: true,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 29,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          ItemScreenIcon(icon: Icons.remove),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              '01',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          ItemScreenIcon(icon: Icons.add),
-                        ],
-                      ),
+                      QuantityCounterWidget(),
                     ],
                   ),
                   SizedBox(height: 8),
@@ -90,7 +84,7 @@ class ItemScreen extends StatelessWidget {
                   Text(
                     "Bright, juicy, and packed with Vitamin C, our fresh oranges are the perfect balance of sweet and tangy flavor. Ideal for snacking, juicing, or adding zest to your favorite recipes. Hand-picked to ensure the highest quality and ripeness. Elevate your daily fruit intake with nature's citrus powerhouse!",
                     style: TextStyle(
-                      fontSize: 19,
+                      fontSize: 20,
                       height: 1.6,
                       color: Colors.white,
                     ),
@@ -127,10 +121,10 @@ class ItemScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const ItmeScreenFooter(),
           ],
         ),
-        const ItmeScreenFooter(),
-      ]),
+      ),
     );
   }
 }

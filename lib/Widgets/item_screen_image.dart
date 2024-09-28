@@ -10,7 +10,7 @@ class ItemScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 5),
+      padding: const EdgeInsets.only(top: 65, bottom: 25),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(

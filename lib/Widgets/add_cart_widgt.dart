@@ -9,9 +9,9 @@ class AddCart extends StatelessWidget {
     return IconButton(
       onPressed: onTap,
       icon: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(21), color: kPrimaryColor),
+            borderRadius: BorderRadius.circular(25), color: kPrimaryColor),
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,6 +20,9 @@ class AddCart extends StatelessWidget {
               size: 30,
               Icons.add_shopping_cart,
               color: Colors.white,
+            ),
+            SizedBox(
+              width: 5,
             ),
             Text(
               'Add To Cart',

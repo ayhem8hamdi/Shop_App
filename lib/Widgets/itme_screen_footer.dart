@@ -7,18 +7,22 @@ class ItmeScreenFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            '120\$',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 29,
-              color: kPrimaryColor,
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Text(
+              '120\$',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                color: kPrimaryColor,
+              ),
             ),
           ),
           const AddCart()
