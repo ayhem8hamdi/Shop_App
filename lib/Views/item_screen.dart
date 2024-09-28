@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopp_app/Widgets/favourit_star_icon.dart';
-import 'package:shopp_app/Widgets/item_screen_icon.dart';
+import 'package:shopp_app/Widgets/delevery_time_widget.dart';
+import 'package:shopp_app/Widgets/favourite_and_reviews_section.dart';
 import 'package:shopp_app/Widgets/item_screen_image.dart';
 import 'package:shopp_app/Widgets/itme_screen_footer.dart';
 import 'package:shopp_app/Widgets/quantity_counter_widget.dart';
 import 'package:shopp_app/constants.dart';
-import 'package:sliding_sheet/sliding_sheet.dart';
 
 class ItemScreen extends StatelessWidget {
   const ItemScreen({super.key});
@@ -52,25 +50,13 @@ class ItemScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      QuantityCounterWidget(),
+                      QuantityCounterWidget(
+                        color: Colors.white,
+                      ),
                     ],
                   ),
                   SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      StarIcon(),
-                      Text(
-                        '4.8',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                      SizedBox(width: 8),
-                      Text(
-                        '(457 reviews)',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ],
-                  ),
+                  FavouritAndReviewSection(),
                   SizedBox(height: 8),
                   Text(
                     'Description:',
@@ -89,35 +75,7 @@ class ItemScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 24),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Delivery Time:',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            )),
-                        Row(
-                          children: [
-                            Icon(
-                              CupertinoIcons.clock,
-                              color: Colors.white,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                '20 minutes',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ]),
+                  DeleveryTimeWidget(),
                 ],
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Methods/scaffold_messenger.dart';
 
 class StarIcon extends StatefulWidget {
   const StarIcon({
@@ -18,17 +19,20 @@ class _StarIconState extends State<StarIcon> {
         onPressed: () {
           isPressed = !isPressed;
           setState(() {});
+          isPressed == true
+              ? scafMess(context, 'Added to favourite')
+              : scafMess(context, 'Removed');
         },
         icon: isPressed == false
             ? const Icon(
                 Icons.star_border,
                 color: Colors.white,
-                size: 28,
+                size: 32,
               )
             : const Icon(
                 Icons.star,
                 color: Colors.orange,
-                size: 28,
+                size: 32,
               ));
   }
 }

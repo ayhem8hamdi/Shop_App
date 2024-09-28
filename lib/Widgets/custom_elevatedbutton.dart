@@ -6,28 +6,37 @@ class CustomElevatedButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
+    required this.raduis,
+    required this.padding,
   });
   final String text;
   final void Function()? onPressed;
+  final double raduis;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: kPrimaryColor,
-        foregroundColor: Colors.white,
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(raduis), color: kPrimaryColor),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: kPrimaryColor,
+          foregroundColor: Colors.white,
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(raduis),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: padding),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 24,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

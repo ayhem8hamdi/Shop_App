@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shopp_app/Widgets/item_screen_icon.dart';
 
 class QuantityCounterWidget extends StatefulWidget {
-  const QuantityCounterWidget({super.key});
+  const QuantityCounterWidget({super.key, required this.color});
+  final Color color;
 
   @override
   State<QuantityCounterWidget> createState() => _QuantityCounterWidgetState();
@@ -35,8 +36,8 @@ class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
             counter < 10 && counter != 0 ? '0$counter' : '$counter',
-            style: const TextStyle(
-                fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 19, color: widget.color, fontWeight: FontWeight.bold),
           ),
         ),
         ItemScreenIcon(
