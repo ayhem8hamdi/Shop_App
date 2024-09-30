@@ -30,8 +30,8 @@ class SplashScreen extends StatelessWidget {
               ),
               const SizedBox(height: 25),
               CustomElevatedButton(
-                padding: 20,
-                raduis: 10,
+                padding: 19,
+                raduis: 7,
                 text: 'Get Started',
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, HomeScreen.id);

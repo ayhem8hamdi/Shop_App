@@ -16,12 +16,12 @@ class PopularCatgoryItem extends StatelessWidget {
             BoxShadow(color: Colors.grey, blurRadius: 6, spreadRadius: 1)
           ]),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 7),
+        padding: const EdgeInsets.all(5),
         child: Image.asset(
           image,
           width: 90,
           height: 90,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
       ),
     );

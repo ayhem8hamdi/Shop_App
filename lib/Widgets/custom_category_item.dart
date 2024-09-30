@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Models/category.dart';
 
 class CustomCategory extends StatelessWidget {
   const CustomCategory({
     super.key,
-    required this.image,
+    required this.cat,
   });
 
-  final String image;
+  final Category cat;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +26,17 @@ class CustomCategory extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(5),
             child: Image.asset(
-              image,
-              width: 60,
-              height: 60,
-              fit: BoxFit.cover,
+              cat.image,
+              width: 64,
+              height: 64,
+              fit: BoxFit.contain,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 12, right: 5),
+          Padding(
+            padding: const EdgeInsets.only(left: 12, right: 5),
             child: Text(
-              'Tomatos',
-              style: TextStyle(
+              cat.title,
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 17,
               ),
