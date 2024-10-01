@@ -20,11 +20,14 @@ class ItemScreenImage extends StatelessWidget {
           ),
         ],
       ),
-      child: Image.asset(
-        image,
-        fit: BoxFit.fill,
-        width: width,
-        height: height,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Image.asset(
+          image,
+          fit: BoxFit.contain,
+          width: width,
+          height: height,
+        ),
       ),
     );
   }

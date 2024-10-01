@@ -9,18 +9,33 @@ class CustomListViewBuilder extends StatelessWidget {
     required this.type,
   });
   final String type;
-
-  final List<Category> list1 = const [
-    Category(image: 'Assets/Images/1.png', title: 'Strawberry'),
-    Category(image: 'Assets/Images/2.png', title: 'Orange'),
-    Category(image: 'Assets/Images/3.png', title: 'Cake'),
-    Category(image: 'Assets/Images/4.png', title: 'Felfel'),
-    Category(image: 'Assets/Images/5.png', title: 'Tmatem'),
-    Category(image: 'Assets/Images/6.png', title: 'Offeh'),
-    Category(image: 'Assets/Images/7.png', title: 'Lham')
-  ];
   @override
   Widget build(BuildContext context) {
+    final List<Category> list1 = [
+      Category(
+          image: 'Assets/Images/1.png',
+          title: 'Strawberry',
+          stock: 120,
+          price: 120),
+      Category(
+          image: 'Assets/Images/2.png', title: 'Orange', stock: 120, price: 15),
+      Category(
+          image: 'Assets/Images/3.png', title: 'Cake', stock: 120, price: 200),
+      Category(
+          image: 'Assets/Images/4.png',
+          title: 'Felfel',
+          stock: 120,
+          price: 350),
+      Category(
+          image: 'Assets/Images/5.png',
+          title: 'Tmatem',
+          stock: 120,
+          price: 400),
+      Category(
+          image: 'Assets/Images/6.png', title: 'Offeh', stock: 120, price: 10),
+      Category(
+          image: 'Assets/Images/7.png', title: 'Lham', stock: 120, price: 47)
+    ];
     return ListView.builder(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,

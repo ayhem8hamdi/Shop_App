@@ -3,15 +3,16 @@ import 'package:shopp_app/Widgets/item_screen_icon.dart';
 
 class QuantityCounterWidget extends StatefulWidget {
   const QuantityCounterWidget({super.key, required this.color});
+
   final Color color;
 
   @override
   State<QuantityCounterWidget> createState() => _QuantityCounterWidgetState();
 }
 
-int counter = 0;
-
 class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
+  int counter = 0;
+
   void add() {
     setState(() {
       counter++;
@@ -20,7 +21,9 @@ class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
 
   void minus() {
     setState(() {
-      counter > 0 ? counter-- : null;
+      if (counter > 0) {
+        counter--;
+      }
     });
   }
 

@@ -3,7 +3,8 @@ import 'package:shopp_app/Widgets/add_cart_widgt.dart';
 import 'package:shopp_app/constants.dart';
 
 class ItmeScreenFooter extends StatelessWidget {
-  const ItmeScreenFooter({super.key});
+  const ItmeScreenFooter({super.key, required this.price});
+  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ItmeScreenFooter extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 16),
             child: Text(
-              '120\$',
+              '$price\$',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 40,

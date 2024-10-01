@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Models/category.dart';
 import 'package:shopp_app/Views/item_screen.dart';
 import 'package:shopp_app/Widgets/add_to_cart_icon.dart';
 import 'package:shopp_app/constants.dart';
 
 class TopCatItem extends StatelessWidget {
-  const TopCatItem({super.key});
+  const TopCatItem({super.key, required this.cat});
+  final Category cat;
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +44,10 @@ class TopCatItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
-                  'Assets/Images/5.png',
+                  cat.image,
                   width: 80,
                   height: 80,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
@@ -52,9 +55,9 @@ class TopCatItem extends StatelessWidget {
           const SizedBox(
             height: 6,
           ),
-          const Text(
-            'item title',
-            style: TextStyle(
+          Text(
+            cat.title,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
               color: Color(0xff555555),
@@ -62,9 +65,9 @@ class TopCatItem extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          const Text(
-            'Fresh Fruit 2Kg',
-            style: TextStyle(
+          Text(
+            "${cat.stock} in Stock",
+            style: const TextStyle(
               color: Colors.black54,
               fontWeight: FontWeight.w500,
               fontSize: 17,
@@ -76,7 +79,7 @@ class TopCatItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '\$20.00',
+                '\$ ${cat.price}',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
@@ -84,7 +87,8 @@ class TopCatItem extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, ItemScreen.id),
+                  onTap: () => Navigator.pushNamed(context, ItemScreen.id,
+                      arguments: cat),
                   child: const AddToCartIcon())
             ],
           ),

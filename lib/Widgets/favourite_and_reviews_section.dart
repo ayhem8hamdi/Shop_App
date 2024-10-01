@@ -11,11 +11,6 @@ class FavouritAndReviewSection extends StatelessWidget {
       children: [
         StarIcon(),
         Text(
-          '4.8',
-          style: TextStyle(fontSize: 22, color: Colors.white),
-        ),
-        SizedBox(width: 8),
-        Text(
           '(457 reviews)',
           style: TextStyle(fontSize: 22, color: Colors.white),
         ),
