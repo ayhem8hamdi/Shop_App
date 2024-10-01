@@ -15,7 +15,7 @@ class LoadingItemCubit extends Cubit<LoadingItemsCubitStates> {
 
       emit(ItemLoaded(categories));
     } catch (e) {
-      emit(ItemError());
+      emit(ItemError(e.toString()));
     }
   }
 }

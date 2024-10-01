@@ -4,7 +4,10 @@ abstract class LoadingItemsCubitStates {}
 
 class ItemInitial extends LoadingItemsCubitStates {}
 
-class ItemError extends LoadingItemsCubitStates {}
+class ItemError extends LoadingItemsCubitStates {
+  final String error;
+  ItemError(this.error);
+}
 
 class ItemLoaded extends LoadingItemsCubitStates {
   final List<Category> cat;
