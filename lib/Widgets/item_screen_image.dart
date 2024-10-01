@@ -9,24 +9,26 @@ class ItemScreenImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 65, bottom: 25),
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
-            spreadRadius: 3,
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.only(top: 65, bottom: 25),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 8,
+              spreadRadius: 3,
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Image.asset(
+            image,
+            fit: BoxFit.contain,
+            width: width,
+            height: height,
           ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Image.asset(
-          image,
-          fit: BoxFit.contain,
-          width: width,
-          height: height,
         ),
       ),
     );

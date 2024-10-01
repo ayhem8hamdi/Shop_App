@@ -16,15 +16,13 @@ class ItemScreen extends StatelessWidget {
     final Category cat = ModalRoute.of(context)!.settings.arguments as Category;
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ItemScreenImage(
-              image: cat.image,
-              width: double.infinity,
-              height: 120,
-            ),
+                image: cat.image, height: 230, width: double.infinity),
             Container(
               padding: const EdgeInsets.only(
                   left: 16, right: 16, top: 40, bottom: 30),
@@ -62,8 +60,8 @@ class ItemScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  Text(
-                    'Stock : ${cat.stock} items',
+                  const Text(
+                    'Stock : 120 items',
                     style: const TextStyle(
                       fontSize: 17,
                       color: Colors.white70,
