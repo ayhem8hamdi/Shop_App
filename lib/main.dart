@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/LoadingItemsCubit/loading_item_cubit.dart';
 import 'package:shopp_app/Views/home_screen.dart';
 import 'package:shopp_app/Views/item_screen.dart';
 import 'package:shopp_app/Views/splash_screen.dart';
@@ -18,14 +20,17 @@ class ShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        SplashScreen.id: (context) => const SplashScreen(),
-        HomeScreen.id: (context) => const HomeScreen(),
-        ItemScreen.id: (context) => const ItemScreen()
-      },
-      initialRoute: SplashScreen.id,
+    return BlocProvider(
+      create: (context) => LoadingItemCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          SplashScreen.id: (context) => const SplashScreen(),
+          HomeScreen.id: (context) => const HomeScreen(),
+          ItemScreen.id: (context) => const ItemScreen()
+        },
+        initialRoute: SplashScreen.id,
+      ),
     );
   }
 }

@@ -13,7 +13,7 @@ class LoadingItemCubit extends Cubit<LoadingItemsCubitStates> {
       List<Category> categories =
           await getProducts(collectionName: 'ProductsItems');
 
-      emit(ItemLoaded());
+      emit(ItemLoaded(categories));
     } catch (e) {
       emit(ItemError());
     }
