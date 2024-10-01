@@ -75,6 +75,7 @@ class ItemScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  SizedBox(height: 15),
                   DeleveryTimeWidget(),
                 ],
               ),
