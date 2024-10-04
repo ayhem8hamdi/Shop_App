@@ -1,6 +1,6 @@
 abstract class UpdateItemCubitStates {}
 
-class ItemInitial extends UpdateItemCubitStates {}
+class UpdateItemInitial extends UpdateItemCubitStates {}
 
 class ItemUpdateError extends UpdateItemCubitStates {
   final String error;
