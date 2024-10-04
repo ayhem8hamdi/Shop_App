@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit.dart';
 import 'package:shopp_app/Widgets/item_screen_icon.dart';
 
 class QuantityCounterWidget extends StatefulWidget {
@@ -16,6 +18,7 @@ class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
   void add() {
     setState(() {
       counter++;
+      BlocProvider.of<UpdateItemCubit>(context).quantiteAcheter = counter;
     });
   }
 

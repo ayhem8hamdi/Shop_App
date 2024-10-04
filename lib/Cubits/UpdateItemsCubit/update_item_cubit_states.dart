@@ -10,3 +10,9 @@ class ItemUpdateError extends UpdateItemCubitStates {
 class ItemUpdated extends UpdateItemCubitStates {}
 
 class ItemUpdateLoading extends UpdateItemCubitStates {}
+
+class ItemUpdatedWithStock extends UpdateItemCubitStates {
+  final int updatedStock;
+
+  ItemUpdatedWithStock(this.updatedStock);
+}
