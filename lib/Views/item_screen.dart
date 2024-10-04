@@ -60,8 +60,8 @@ class ItemScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  const Text(
-                    'Stock : 120 items',
+                  Text(
+                    'Stock : ${cat.stock} items',
                     style: const TextStyle(
                       fontSize: 17,
                       color: Colors.white70,

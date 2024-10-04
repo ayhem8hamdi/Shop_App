@@ -6,9 +6,11 @@ Future<List<Category>> getProducts({required String collectionName}) async {
     final CollectionReference productsRef =
         FirebaseFirestore.instance.collection(collectionName);
     List<Category> products = [];
+
     QuerySnapshot allProducts = await productsRef.get();
 
     for (var elt in allProducts.docs) {
+      
       Category cat = Category.fetchFireBaseData(elt);
       products.add(cat);
     }

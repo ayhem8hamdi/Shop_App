@@ -1,24 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Category {
-  final String title;
-  final String id;
-  final String image;
-  int? stock;
-  final double price;
-  Category(
-      {required this.id,
-      required this.title,
-      required this.image,
-      this.stock = 120,
-      required this.price});
+  String id;
+  String title;
+  String image;
+  int stock;
+  double price; // This is where the issue likely is
+
+  Category({
+    required this.id,
+    required this.title,
+    required this.image,
+    required this.stock,
+    required this.price,
+  });
+
   factory Category.fetchFireBaseData(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return Category(
-        id: doc.id,
-        image: data['image'],
-        price: data['price'],
-        title: data['title'],
-        stock: data['stock']);
+      id: doc.id,
+      title: data['title'] ?? '',
+      image: data['image'] ?? '',
+      stock: data['stock'] ?? 0,
+      price: (data['price'] is int)
+          ? (data['price'] as int).toDouble()
+          : (data['price'] as double), 
+    );
   }
 }
