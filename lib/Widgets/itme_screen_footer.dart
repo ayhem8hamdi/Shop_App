@@ -18,7 +18,7 @@ class ItmeScreenFooter extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 16),
             child: Text(
-              '$price\$',
+              '\$ ${price % 1 != 0 ? price.toString() : price.toInt()}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 40,
