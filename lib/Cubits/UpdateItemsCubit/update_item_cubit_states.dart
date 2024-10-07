@@ -7,12 +7,10 @@ class ItemUpdateError extends UpdateItemCubitStates {
   ItemUpdateError(this.error);
 }
 
-class ItemUpdated extends UpdateItemCubitStates {}
+class ItemUpdated extends UpdateItemCubitStates {
+  final int value;
+
+  ItemUpdated(this.value);
+}
 
 class ItemUpdateLoading extends UpdateItemCubitStates {}
-
-class ItemUpdatedWithStock extends UpdateItemCubitStates {
-  final int updatedStock;
-
-  ItemUpdatedWithStock(this.updatedStock);
-}

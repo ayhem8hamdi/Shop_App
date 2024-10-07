@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/LoadingItemsCubit/loading_items_cubit_states.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit_states.dart';
 import 'package:shopp_app/Models/category.dart';
@@ -28,7 +29,7 @@ class ItemScreen extends StatelessWidget {
                 image: cat.image, height: 230, width: double.infinity),
             BlocListener<UpdateItemCubit, UpdateItemCubitStates>(
               listener: (context, state) {
-                if (state is ItemUpdatedWithStock) {
+                if (state is ItemUpdated) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Item updated!')),
                   );
@@ -69,24 +70,27 @@ class ItemScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 5),
-                    BlocBuilder<UpdateItemCubit, UpdateItemCubitStates>(
+                    BlocConsumer<UpdateItemCubit, UpdateItemCubitStates>(
+                      listener: (context, state) {
+                        state is ItemInitial
+                            ? print('bdina')
+                            : state is ItemLoading
+                                ? print('hosber')
+                                : state is ItemUpdated
+                                    ? print(state.value)
+                                    : print('zbi');
+                      },
                       builder: (context, state) {
-                        if (state is ItemUpdatedWithStock) {
-                          return Text(
-                            'Stock: ${state.updatedStock} items',
-                            style: const TextStyle(
-                                fontSize: 17, color: Colors.white70),
-                          );
-                        } else if (state is ItemUpdateLoading) {
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        } else {
-                          return Text(
-                            'Stock: ${cat.stock} items',
-                            style: const TextStyle(
-                                fontSize: 17, color: Colors.white70),
-                          );
-                        }
+                        print(state);
+                        return Text(
+                          state is ItemUpdateLoading
+                              ? 'Updating...'
+                              : state is ItemUpdated
+                                  ? 'Stock: ${state.value} items'
+                                  : 'Stock: ${cat.stock} items',
+                          style: const TextStyle(
+                              fontSize: 17, color: Colors.white70),
+                        );
                       },
                     ),
                     const FavouritAndReviewSection(),

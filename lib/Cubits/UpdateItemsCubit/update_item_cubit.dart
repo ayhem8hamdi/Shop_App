@@ -8,16 +8,14 @@ import 'package:shopp_app/Models/category.dart';
 class UpdateItemCubit extends Cubit<UpdateItemCubitStates> {
   UpdateItemCubit() : super(UpdateItemInitial());
 
-  int quantiteAcheter = 0;
+  int counter = 0;
 
   void updateData({required Category cat}) async {
     emit(ItemUpdateLoading());
     try {
-      await updateUserData(cat: cat, quantiteAcheter: quantiteAcheter);
+      await updateUserData(cat: cat, quantiteAcheter: counter);
 
-      int updatedStock = cat.stock - quantiteAcheter;
-
-      emit(ItemUpdatedWithStock(updatedStock));
+      emit(ItemUpdated(cat.stock - counter));
     } catch (e) {
       emit(ItemUpdateError(e.toString()));
     }

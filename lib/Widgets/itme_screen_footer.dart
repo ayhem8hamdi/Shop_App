@@ -33,7 +33,9 @@ class ItmeScreenFooter extends StatelessWidget {
           ),
           AddCart(
             onTap: () {
-              BlocProvider.of<UpdateItemCubit>(context).updateData(cat: cat);
+              BlocProvider.of<UpdateItemCubit>(context).updateData(
+                cat: cat,
+              );
               BlocProvider.of<LoadingItemCubit>(context).fetchData();
             },
           )

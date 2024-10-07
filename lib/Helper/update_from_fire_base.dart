@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:shopp_app/Models/category.dart';
 
 Future<void> updateUserData(
@@ -8,7 +9,6 @@ Future<void> updateUserData(
 
   try {
     await users.doc(cat.id).update({'stock': cat.stock - quantiteAcheter});
-    print("Data updated successfully");
   } catch (e) {
     print("Error updating document: $e");
   }
