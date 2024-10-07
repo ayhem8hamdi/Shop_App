@@ -5,7 +5,7 @@ class Category {
   String title;
   String image;
   int stock;
-  double price; // This is where the issue likely is
+  double price;
 
   Category({
     required this.id,
@@ -24,7 +24,7 @@ class Category {
       stock: data['stock'] ?? 0,
       price: (data['price'] is int)
           ? (data['price'] as int).toDouble()
-          : (data['price'] as double), 
+          : (data['price'] as double),
     );
   }
 }

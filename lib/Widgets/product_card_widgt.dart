@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shopp_app/Models/category.dart';
-import 'package:shopp_app/Widgets/quantity_counter_widget.dart';
+
 import 'package:shopp_app/constants.dart';
+import 'package:shopp_app/Models/card.dart';
 
 class ProductCratWidgt extends StatelessWidget {
   const ProductCratWidgt({super.key, required this.cat});
-  final Category cat;
+  final Cart cat;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,10 +24,14 @@ class ProductCratWidgt extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 7),
           child: Row(
             children: [
-              Image.asset(
-                cat.image,
-                width: 86,
-                height: 86,
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 5),
+                child: Image.asset(
+                  cat.image,
+                  width: 86,
+                  height: 86,
+                  fit: BoxFit.contain,
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,20 +49,20 @@ class ProductCratWidgt extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 8),
-                    child: Text(
-                      cat.price.toString(),
-                      style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          inherit: false),
-                    ),
-                  )
+                      margin: const EdgeInsets.only(
+                        left: 8,
+                      ),
+                      child: Text(
+                          ' ${cat.price % 1 != 0 ? cat.price.toString() : cat.price.toInt()} DT',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: kPrimaryColor,
+                          )))
                 ],
               ),
               const Spacer(),
-              const ProductCardTrailing()
+              ProductCardTrailing(cat: cat)
             ],
           ),
         )
@@ -68,7 +72,8 @@ class ProductCratWidgt extends StatelessWidget {
 }
 
 class ProductCardTrailing extends StatelessWidget {
-  const ProductCardTrailing({super.key});
+  const ProductCardTrailing({super.key, required this.cat});
+  final Cart cat;
 
   @override
   Widget build(BuildContext context) {
@@ -87,9 +92,17 @@ class ProductCardTrailing extends StatelessWidget {
         const SizedBox(
           height: 9,
         ),
-        QuantityCounterWidget(
-          color: kPrimaryColor,
-        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 7, top: 8),
+          child: Text(
+            '${cat.qte} items',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+              color: kPrimaryColor,
+            ),
+          ),
+        )
       ],
     );
   }

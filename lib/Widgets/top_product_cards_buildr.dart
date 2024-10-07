@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
-import 'package:shopp_app/Models/category.dart';
 
 import 'package:shopp_app/Widgets/product_card_widgt.dart';
 
@@ -12,12 +11,10 @@ class TopProductCartBuildr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Category> selectedProducts =
-        BlocProvider.of<AddToCardCubit>(context).selectedProducts;
-
+    var cards = BlocProvider.of<AddToCardCubit>(context).selectedProducts;
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: selectedProducts.isEmpty
+      child: cards.isEmpty
           ? Container(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: const Text(
@@ -31,10 +28,8 @@ class TopProductCartBuildr extends StatelessWidget {
           : ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, i) =>
-                  ProductCratWidgt(cat: selectedProducts[i]),
-              itemCount: selectedProducts
-                  .length, // Adjusted to show all selected products
+              itemBuilder: (context, i) => ProductCratWidgt(cat: cards[i]),
+              itemCount: cards.length, // Adjusted to show all selected products
             ),
     );
   }

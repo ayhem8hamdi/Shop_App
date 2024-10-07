@@ -37,7 +37,9 @@ class ItmeScreenFooter extends StatelessWidget {
               BlocProvider.of<UpdateItemCubit>(context).updateData(
                 cat: cat,
               );
-              BlocProvider.of<AddToCardCubit>(context).cardUpdate(cat: cat);
+              BlocProvider.of<AddToCardCubit>(context).cardUpdate(
+                  cat: cat,
+                  nbr: BlocProvider.of<UpdateItemCubit>(context).counter);
               BlocProvider.of<LoadingItemCubit>(context).fetchData();
             },
           )
