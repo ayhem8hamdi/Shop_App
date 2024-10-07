@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
 import 'package:shopp_app/Cubits/LoadingItemsCubit/loading_item_cubit.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit.dart';
 import 'package:shopp_app/Models/category.dart';
@@ -36,6 +37,7 @@ class ItmeScreenFooter extends StatelessWidget {
               BlocProvider.of<UpdateItemCubit>(context).updateData(
                 cat: cat,
               );
+              BlocProvider.of<AddToCardCubit>(context).cardUpdate(cat: cat);
               BlocProvider.of<LoadingItemCubit>(context).fetchData();
             },
           )

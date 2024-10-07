@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shopp_app/Models/category.dart';
 import 'package:shopp_app/Widgets/quantity_counter_widget.dart';
 import 'package:shopp_app/constants.dart';
 
 class ProductCratWidgt extends StatelessWidget {
-  const ProductCratWidgt({super.key});
-
+  const ProductCratWidgt({super.key, required this.cat});
+  final Category cat;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +25,7 @@ class ProductCratWidgt extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(
-                'Assets/Images/6.png',
+                cat.image,
                 width: 86,
                 height: 86,
               ),
@@ -35,7 +36,7 @@ class ProductCratWidgt extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(left: 8, bottom: 6),
                     child: Text(
-                      'Item Title',
+                      cat.title,
                       style: TextStyle(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
@@ -46,7 +47,7 @@ class ProductCratWidgt extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(left: 8),
                     child: Text(
-                      '20\$',
+                      cat.price.toString(),
                       style: TextStyle(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,

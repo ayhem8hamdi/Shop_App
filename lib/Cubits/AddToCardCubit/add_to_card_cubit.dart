@@ -6,5 +6,8 @@ class AddToCardCubit extends Cubit<AddToCardStates> {
   AddToCardCubit() : super(AddToCardInitial());
 
   List<Category> selectedProducts = [];
-  void cardUpdate() {}
+  void cardUpdate({required Category cat}) {
+    selectedProducts.add(cat);
+    emit(AddtoCardSucces());
+  }
 }

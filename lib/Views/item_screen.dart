@@ -70,28 +70,10 @@ class ItemScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 5),
-                    BlocConsumer<UpdateItemCubit, UpdateItemCubitStates>(
-                      listener: (context, state) {
-                        state is ItemInitial
-                            ? print('bdina')
-                            : state is ItemLoading
-                                ? print('hosber')
-                                : state is ItemUpdated
-                                    ? print(state.value)
-                                    : print('zbi');
-                      },
-                      builder: (context, state) {
-                        print(state);
-                        return Text(
-                          state is ItemUpdateLoading
-                              ? 'Updating...'
-                              : state is ItemUpdated
-                                  ? 'Stock: ${state.value} items'
-                                  : 'Stock: ${cat.stock} items',
-                          style: const TextStyle(
-                              fontSize: 17, color: Colors.white70),
-                        );
-                      },
+                    Text(
+                      'Stock: ${cat.stock} items',
+                      style:
+                          const TextStyle(fontSize: 17, color: Colors.white70),
                     ),
                     const FavouritAndReviewSection(),
                     const SizedBox(height: 8),
