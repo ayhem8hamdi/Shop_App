@@ -65,7 +65,7 @@ class ItemScreen extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        const QuantityCounterWidget(color: Colors.white),
+                        QuantityCounterWidget(color: Colors.white, cat: cat),
                       ],
                     ),
                     const SizedBox(height: 5),

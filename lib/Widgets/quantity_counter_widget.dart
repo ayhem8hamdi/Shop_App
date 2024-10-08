@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit_states.dart';
+import 'package:shopp_app/Methods/scaffold_messenger.dart';
+import 'package:shopp_app/Models/category.dart';
 import 'package:shopp_app/Widgets/item_screen_icon.dart';
 
 class QuantityCounterWidget extends StatefulWidget {
-  const QuantityCounterWidget({super.key, required this.color});
+  const QuantityCounterWidget(
+      {super.key, required this.color, required this.cat});
 
   final Color color;
-
+  final Category cat;
   @override
   State<QuantityCounterWidget> createState() => _QuantityCounterWidgetState();
 }
@@ -17,17 +20,20 @@ class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
   int counter = 0;
 
   void add() {
-    setState(() {
-      counter++;
-    });
-    BlocProvider.of<UpdateItemCubit>(context).counter = counter;
+    if (counter < widget.cat.stock) {
+      setState(() {
+        counter++;
+      });
+      BlocProvider.of<UpdateItemCubit>(context).counter = counter;
+    } else {
+      scafMess(context, 'U \'ve reached max Quantity');
+    }
   }
 
   void minus() {
     setState(() {
       if (counter > 0) {
         counter--;
-        // Update the quantity in the cubit
       }
     });
     BlocProvider.of<UpdateItemCubit>(context).counter = counter;
