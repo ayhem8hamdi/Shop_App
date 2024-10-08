@@ -81,12 +81,15 @@ class ProductCardTrailing extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(right: 7, top: 4),
-          child: Icon(
-            size: 28,
-            Icons.disabled_by_default,
-            color: Colors.green,
+        Padding(
+          padding: const EdgeInsets.only(right: 7, top: 4),
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              size: 28,
+              Icons.disabled_by_default,
+              color: Colors.green,
+            ),
           ),
         ),
         const SizedBox(
