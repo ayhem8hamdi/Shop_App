@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
+import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_states.dart';
 
 class CustomBadge extends StatelessWidget {
   const CustomBadge({super.key, this.onTap});
@@ -12,12 +15,16 @@ class CustomBadge extends StatelessWidget {
       alignment: Alignment.topRight,
       smallSize: 18,
       largeSize: 24,
-      label: const Text(
-        '7',
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.bold, // Make the text bold
-        ),
+      label: BlocBuilder<AddToCardCubit, AddToCardStates>(
+        builder: (context, state) {
+          return Text(
+            '${BlocProvider.of<AddToCardCubit>(context).selectedProducts.length}',
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        },
       ),
       isLabelVisible: true,
       textColor: Colors.white,

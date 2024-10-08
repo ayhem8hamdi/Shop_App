@@ -14,23 +14,12 @@ class TopProductCartBuildr extends StatelessWidget {
     var cards = BlocProvider.of<AddToCardCubit>(context).selectedProducts;
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: cards.isEmpty
-          ? Container(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              child: const Text(
-                'No products are chosen for now. Try to get what you need.',
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-            )
-          : ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, i) => ProductCratWidgt(cat: cards[i]),
-              itemCount: cards.length, // Adjusted to show all selected products
-            ),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, i) => ProductCratWidgt(cat: cards[i]),
+        itemCount: cards.length, // Adjusted to show all selected products
+      ),
     );
   }
 }

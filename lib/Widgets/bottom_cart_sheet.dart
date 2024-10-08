@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
+import 'package:shopp_app/Models/card.dart';
 import 'package:shopp_app/Widgets/custom_elevatedbutton.dart';
 import 'package:shopp_app/Widgets/shopping_fee_facture.dart';
 import 'package:shopp_app/Widgets/top_product_cards_buildr.dart';
@@ -9,9 +12,28 @@ class BottomCartSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Material(
-      child: Column(
-          children: [TopProductCartBuildr(), SoppingFee(), CheckOutWidget()]),
+    List<Cart> cards =
+        BlocProvider.of<AddToCardCubit>(context).selectedProducts;
+    return Material(
+      child: cards.isEmpty
+          ? Container(
+              height: 300,
+              padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 20),
+              child: const Center(
+                child: Text(
+                  'No products are chosen for now. Try to get what you need.',
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22),
+                ),
+              ),
+            )
+          : const Column(children: [
+              TopProductCartBuildr(),
+              SoppingFee(),
+              CheckOutWidget()
+            ]),
     );
   }
 }
