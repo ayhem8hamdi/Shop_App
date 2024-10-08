@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_cubit.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_state.dart';
 import 'package:shopp_app/constants.dart';
 
 class SoppingFee extends StatelessWidget {
@@ -57,7 +61,7 @@ class SoppingFee extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '20\$',
+                      '7 DT',
                       style: TextStyle(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
@@ -67,13 +71,20 @@ class SoppingFee extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    Text(
-                      '10\$',
-                      style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          inherit: false),
+                    BlocBuilder<DeleteItemFromCardCubitCubit,
+                        DeleteItemFromCardCubitState>(
+                      builder: (context, state) {
+                        double val = BlocProvider.of<AddToCardCubit>(context)
+                            .getTotalPrice();
+                        return Text(
+                          '${val % 1 != 0 ? val.toString() : val.toInt()} DT',
+                          style: TextStyle(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              inherit: false),
+                        );
+                      },
                     ),
                   ],
                 ),

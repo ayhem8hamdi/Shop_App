@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_cubit.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_state.dart';
 import 'package:shopp_app/Models/card.dart';
 import 'package:shopp_app/Widgets/custom_elevatedbutton.dart';
 import 'package:shopp_app/Widgets/shopping_fee_facture.dart';
@@ -14,26 +16,32 @@ class BottomCartSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Cart> cards =
         BlocProvider.of<AddToCardCubit>(context).selectedProducts;
-    return Material(
-      child: cards.isEmpty
-          ? Container(
-              height: 300,
-              padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 20),
-              child: const Center(
-                child: Text(
-                  'No products are chosen for now. Try to get what you need.',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22),
-                ),
-              ),
-            )
-          : const Column(children: [
-              TopProductCartBuildr(),
-              SoppingFee(),
-              CheckOutWidget()
-            ]),
+    return BlocBuilder<DeleteItemFromCardCubitCubit,
+        DeleteItemFromCardCubitState>(
+      builder: (context, state) {
+        return Material(
+          child: cards.isEmpty
+              ? Container(
+                  height: 300,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 45, vertical: 20),
+                  child: const Center(
+                    child: Text(
+                      'No products are chosen for now. Try to get what you need.',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22),
+                    ),
+                  ),
+                )
+              : const Column(children: [
+                  TopProductCartBuildr(),
+                  SoppingFee(),
+                  CheckOutWidget()
+                ]),
+        );
+      },
     );
   }
 }
@@ -59,16 +67,23 @@ class CheckOutWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: Text(
-              '120\$',
-              style: TextStyle(
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 37,
-                  inherit: false),
-            ),
-          ),
+              padding: const EdgeInsets.only(left: 8),
+              child: BlocBuilder<DeleteItemFromCardCubitCubit,
+                  DeleteItemFromCardCubitState>(
+                builder: (context, state) {
+                  double val =
+                      BlocProvider.of<AddToCardCubit>(context).getTotalPrice() +
+                          7;
+                  return Text(
+                    '${val % 1 != 0 ? val.toString() : val.toInt()} DT',
+                    style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 37,
+                        inherit: false),
+                  );
+                },
+              )),
           const CustomElevatedButton(
             text: 'Check Out',
             raduis: 30,

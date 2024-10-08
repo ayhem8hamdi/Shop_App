@@ -28,4 +28,14 @@ class AddToCardCubit extends Cubit<AddToCardStates> {
 
     emit(AddtoCardSucces());
   }
+
+  double getTotalPrice() {
+    double totalPrice = 0;
+
+    for (var product in selectedProducts) {
+      totalPrice += product.price;
+    }
+
+    return totalPrice;
+  }
 }
