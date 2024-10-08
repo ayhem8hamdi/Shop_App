@@ -8,7 +8,11 @@ class AddToCardCubit extends Cubit<AddToCardStates> {
 
   List<Cart> selectedProducts = [];
 
-  void cardUpdate({required Category cat, required int nbr}) {
+  void cardUpdate({required Category cat, required int nbr}) async {
+    emit(AddToCardLoading());
+
+    await Future.delayed(const Duration(seconds: 1));
+
     final existingProductIndex =
         selectedProducts.indexWhere((product) => product.title == cat.title);
 

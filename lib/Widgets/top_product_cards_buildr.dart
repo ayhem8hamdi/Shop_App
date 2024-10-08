@@ -18,7 +18,7 @@ class TopProductCartBuildr extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, i) => ProductCratWidgt(cat: cards[i]),
-        itemCount: cards.length, // Adjusted to show all selected products
+        itemCount: cards.length,
       ),
     );
   }
