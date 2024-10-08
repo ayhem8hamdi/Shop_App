@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_cubit.dart';
 
 import 'package:shopp_app/constants.dart';
 import 'package:shopp_app/Models/card.dart';
@@ -84,7 +87,13 @@ class ProductCardTrailing extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 7, top: 4),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<DeleteItemFromCardCubitCubit>(context)
+                  .deleteFromCard(
+                      cart: BlocProvider.of<AddToCardCubit>(context)
+                          .selectedProducts,
+                      cart1: cat);
+            },
             icon: const Icon(
               size: 28,
               Icons.disabled_by_default,
