@@ -80,7 +80,7 @@ class TopCatItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '\$ ${cat.price % 1 != 0 ? cat.price.toString() : cat.price.toInt()}',
+                  '${cat.price % 1 != 0 ? cat.price.toString() : cat.price.toInt()} DT',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
