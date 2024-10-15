@@ -3,17 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
 import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_states.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit.dart';
+
 import 'package:shopp_app/Methods/scaffold_messenger.dart';
-import 'package:shopp_app/Models/card.dart';
 import 'package:shopp_app/Models/category.dart';
 import 'package:shopp_app/Widgets/item_screen_icon.dart';
 
 class QuantityCounterWidget extends StatefulWidget {
-  const QuantityCounterWidget({
-    super.key,
-    required this.color,
-    required this.cat,
-  });
+  const QuantityCounterWidget(
+      {super.key, required this.color, required this.cat});
 
   final Color color;
   final Category cat;
@@ -47,14 +44,6 @@ class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List<Cart> cart = BlocProvider.of<AddToCardCubit>(context).selectedProducts;
-
-    final existingProductIndex =
-        cart.indexWhere((product) => product.title == widget.cat.title);
-
-    int existingProductQte =
-        existingProductIndex != -1 ? cart[existingProductIndex].qte : 0;
-
     return BlocListener<AddToCardCubit, AddToCardStates>(
       listener: (context, state) {
         if (state is AddtoCardSucces) {
@@ -73,20 +62,19 @@ class _QuantityCounterWidgetState extends State<QuantityCounterWidget> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: buildCounterText(),
+            child: _buildCounterText(),
           ),
           ItemScreenIcon(
             icon: Icons.add,
-            onTap:
-                (existingProductQte + counter < widget.cat.stock) ? add : null,
-            isEnabled: existingProductQte + counter < widget.cat.stock,
+            onTap: counter < widget.cat.stock ? add : null,
+            isEnabled: counter < widget.cat.stock,
           ),
         ],
       ),
     );
   }
 
-  Widget buildCounterText() {
+  Widget _buildCounterText() {
     return Text(
       counter < 10 && counter != 0 ? '0$counter' : '$counter',
       style: TextStyle(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_cubit.dart';
+import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_state.dart';
 import 'package:shopp_app/Widgets/bottom_cart_sheet.dart';
 import 'package:shopp_app/Widgets/custom_badge.dart';
 import 'package:shopp_app/constants.dart';
@@ -22,26 +25,36 @@ class CustomAppBar extends StatelessWidget {
             size: 30,
           ),
           GestureDetector(
-            onTap: () => showSlidingBottomSheet(context,
-                builder: (context) => SlidingSheetDialog(
-                      elevation: 8,
-                      cornerRadius: 16,
-                      builder: (context, state) => const BottomCartSheet(),
-                    )),
+            onTap: () => showSlidingBottomSheet(
+              context,
+              builder: (context) => SlidingSheetDialog(
+                elevation: 8,
+                cornerRadius: 16,
+                builder: (context, state) {
+                  return BlocBuilder<DeleteItemFromCardCubitCubit,
+                      DeleteItemFromCardCubitState>(
+                    builder: (context, state) {
+                      return const BottomCartSheet();
+                    },
+                  );
+                },
+              ),
+            ),
             child: Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 1.0,
-                  )),
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Colors.white,
+                  width: 1.0,
+                ),
+              ),
               child: CustomBadge(
                 onTap: () {},
               ),
             ),
-          )
+          ),
         ],
       ),
     );

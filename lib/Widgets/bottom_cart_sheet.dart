@@ -35,11 +35,18 @@ class BottomCartSheet extends StatelessWidget {
                     ),
                   ),
                 )
-              : const Column(children: [
-                  TopProductCartBuildr(),
-                  SoppingFee(),
-                  CheckOutWidget()
-                ]),
+              : BlocBuilder<DeleteItemFromCardCubitCubit,
+                  DeleteItemFromCardCubitState>(
+                  builder: (context, state) {
+                    return const Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TopProductCartBuildr(),
+                          SoppingFee(),
+                          CheckOutWidget()
+                        ]);
+                  },
+                ),
         );
       },
     );
