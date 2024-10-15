@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopp_app/Methods/scaffold_messenger.dart';
 import 'package:shopp_app/Models/category.dart';
+import 'package:shopp_app/Views/item_screen.dart';
 import 'package:shopp_app/constants.dart';
 
 class FilteredNameListBuilder extends StatelessWidget {
@@ -41,7 +41,8 @@ class FilteredNameListBuilder extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                scafMess(context, 'Tapped on ${names[index]}');
+                Navigator.pushNamed(context, ItemScreen.id,
+                    arguments: names[index]);
               },
             ),
           );
