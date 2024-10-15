@@ -11,14 +11,9 @@ class SearchCubit extends Cubit<SearchListStates> {
       return;
     }
 
-    final filteredTitles = categories
-        .where((category) {
-          return category.title
-              .toLowerCase()
-              .contains(searchTerm.toLowerCase());
-        })
-        .map((category) => category.title)
-        .toList();
+    final filteredTitles = categories.where((category) {
+      return category.title.toLowerCase().contains(searchTerm.toLowerCase());
+    }).toList();
 
     emit(SarchListFiltred(filteredTitles));
   }

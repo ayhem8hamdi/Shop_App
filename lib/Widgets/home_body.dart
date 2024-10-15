@@ -7,6 +7,7 @@ import 'package:shopp_app/Cubits/SearchCubit/search_cubit_states.dart';
 import 'package:shopp_app/Models/category.dart';
 import 'package:shopp_app/Widgets/category_item_builder.dart';
 import 'package:shopp_app/Widgets/custom_grid_builder.dart';
+import 'package:shopp_app/Widgets/filtred_name_list_builder.dart';
 import 'package:shopp_app/Widgets/home_body_headers.dart';
 
 class HomeBody extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void initState() {
     super.initState();
-    // Fetch data when the HomeBody is initialized
+
     BlocProvider.of<LoadingItemCubit>(context).fetchData();
   }
 
@@ -107,27 +108,6 @@ class _HomeBodyState extends State<HomeBody> {
         state.error,
         maxLines: 2,
         textAlign: TextAlign.center,
-      ),
-    );
-  }
-}
-
-class FilteredNameListBuilder extends StatelessWidget {
-  final List<String> names;
-
-  const FilteredNameListBuilder({super.key, required this.names});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 530,
-      child: ListView.builder(
-        itemCount: names.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(names[index]),
-          );
-        },
       ),
     );
   }
