@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopp_app/Cubits/LoadingItemsCubit/loading_item_cubit.dart';
+import 'package:shopp_app/Cubits/LoadingItemsCubit/loading_items_cubit_states.dart';
+import 'package:shopp_app/Cubits/SearchCubit/search_cubit.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});
@@ -20,26 +24,31 @@ class CustomSearchBar extends StatelessWidget {
       ),
       margin: const EdgeInsets.symmetric(horizontal: 25),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: const Row(
+      child: Row(
         children: [
-          Icon(
-            Icons.search,
-          ),
-          SizedBox(width: 10),
+          const Icon(Icons.search),
+          const SizedBox(width: 10),
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              onChanged: (searchTerm) {
+                final loadingState =
+                    BlocProvider.of<LoadingItemCubit>(context).state;
+
+                if (loadingState is ItemLoaded) {
+                  BlocProvider.of<SearchCubit>(context)
+                      .filter(loadingState.cat, searchTerm);
+                }
+              },
+              decoration: const InputDecoration(
                 hintText: 'Search here ...',
                 border: InputBorder.none,
                 hintStyle: TextStyle(color: Colors.grey),
               ),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
-          Icon(Icons.filter_list),
-          SizedBox(
-            width: 7,
-          )
+          const Icon(Icons.filter_list),
+          const SizedBox(width: 7),
         ],
       ),
     );

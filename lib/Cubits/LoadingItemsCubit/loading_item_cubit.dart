@@ -5,13 +5,14 @@ import 'package:shopp_app/Models/category.dart';
 
 class LoadingItemCubit extends Cubit<LoadingItemsCubitStates> {
   LoadingItemCubit() : super(ItemInitial());
-
+  List<Category> cat = [];
   void fetchData() async {
     try {
       emit(ItemLoading());
 
       List<Category> categories =
           await getProducts(collectionName: 'ProductsItems');
+      cat = categories;
 
       emit(ItemLoaded(categories));
     } catch (e) {

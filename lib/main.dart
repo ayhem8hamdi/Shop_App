@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopp_app/Cubits/AddToCardCubit/add_to_card_cubit.dart';
 import 'package:shopp_app/Cubits/DeleteItemFromCardCubit/delete_item_from_card_cubit.dart';
 import 'package:shopp_app/Cubits/LoadingItemsCubit/loading_item_cubit.dart';
+import 'package:shopp_app/Cubits/SearchCubit/search_cubit.dart';
 import 'package:shopp_app/Cubits/UpdateItemsCubit/update_item_cubit.dart';
 import 'package:shopp_app/Views/home_screen.dart';
 import 'package:shopp_app/Views/item_screen.dart';
@@ -36,6 +37,9 @@ class ShopApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DeleteItemFromCardCubitCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(),
         )
       ],
       child: MaterialApp(
